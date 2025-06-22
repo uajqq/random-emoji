@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Emoji Generator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <h1>Random Emoji Generator</h1>
+    <p id="emoji-total"></p>
+    <p id="random-emoji"></p>
+    <p id="random-emoji-name"></p>
+    <button onclick="generateRandomEmoji()">Generate Random Emoji</button>
+    <button id="copy-one" onclick="copyOne()">Copy emoji</button>
+    <button id="copy-one-desc" onclick="copyOneDesc()">Copy emoji description</button>
+    <p id="random-three-emoji"></p>
+    <p id="random-three-emoji-description"></p>
+    <button onclick="generateRandomThreeEmoji()">Generate Three Random Emojis</button>
+    <button id="copyThree" onclick="copyThree()">Copy emojis</button>
+    <p id="random-story"></p>
+    <p id="random-story-description"></p>
+    <button onclick="generateStory()">Generate Confusing Emoji Story</button>
+    <button id="copy-story" onclick="copyStory()">Copy story</button>
+    <button id="copy-story-description" onclick="copyStoryDesc()">Copy story narration</button>
+    <p id="randomness"></p>
+    <img src="https://www.random.org/bitmaps/?format=gif&width=40&height=40&zoom=2"><br>Current Random.org bitmap</img>
+
+    <script src="emojis.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
