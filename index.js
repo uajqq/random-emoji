@@ -78,6 +78,54 @@ async function generateStory() {
         
 }
 
+async function generateStoryNoFlags() {
+    var emojigroup = ""
+    var emojidescriptiongroup = ""
+    for (let i = 0; i < (Math.floor(Math.random() * 4 + 2)); i++) {
+        let randomIndex;
+        response = await fetch(url);
+        randomIndex = await response.text();
+        randomIndex = Number(randomIndex) - 1;
+        console.log(randomIndex);
+        if (emoji["emojis"][randomIndex]["subcategory"] == "country-flag") {
+            i = i - 1;
+            continue
+        }
+        emojigroup = emojigroup + emoji["emojis"][randomIndex]["emoji"];
+        emojidescriptiongroup = emojidescriptiongroup + emoji["emojis"][randomIndex]["name"] + ", "
+        document.getElementById('random-story').innerHTML = emojigroup;
+        document.getElementById('random-story-description').innerHTML = emojidescriptiongroup
+        response2 = await fetch("https://www.random.org/quota/?format=plain");
+        randomRemaining = await response2.text();
+        document.getElementById('randomness').innerHTML = "Random.org bits remaining: " + randomRemaining
+    }
+    emojigroup = emojigroup + "&ensp;🔜&ensp;"
+    emojidescriptiongroup = emojidescriptiongroup + ". Soon: "
+    for (let i = 0; i < (Math.floor(Math.random() * 4 + 2)); i++) {
+        let randomIndex;
+        response = await fetch(url);
+        randomIndex = await response.text();
+        randomIndex = Number(randomIndex) - 1;
+        console.log(randomIndex);
+        if (emoji["emojis"][randomIndex]["subcategory"] == "country-flag") {
+            i = i - 1;
+            continue
+        }
+        emojigroup = emojigroup + emoji["emojis"][randomIndex]["emoji"];
+        emojidescriptiongroup = emojidescriptiongroup + emoji["emojis"][randomIndex]["name"] + ", "
+        document.getElementById('random-story-description').innerHTML = emojidescriptiongroup
+        document.getElementById('random-story').innerHTML = emojigroup;
+        response2 = await fetch("https://www.random.org/quota/?format=plain");
+        randomRemaining = await response2.text();
+        document.getElementById('randomness').innerHTML = "Random.org bits remaining: " + randomRemaining
+    }
+    
+    sentence = emojidescriptiongroup.charAt(0).toUpperCase() + emojidescriptiongroup.slice(1)
+    sentence = "&quot" + sentence.replaceAll(/Flag: /gi, '').replaceAll(', .', '.').slice(0, -2) + ".&quot";
+    document.getElementById('random-story-description').innerHTML = sentence
+        
+}
+
 async function copyOne() {
     var copyText = document.getElementById('random-emoji').innerText;
     navigator.clipboard.writeText(copyText);
