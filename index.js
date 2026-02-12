@@ -12,7 +12,7 @@ async function generateRandomEmoji() {
 
     document.getElementById('random-emoji').innerHTML = emoji["emojis"][randomIndex]["emoji"]
     document.getElementById('random-emoji-name').innerHTML = emoji["emojis"][randomIndex]["name"]
-        + "<br>(" + emoji["emojis"][randomIndex]["category"] + ")"
+        + "<br>(" + emoji["emojis"][randomIndex]["group"] + ")"
     response2 = await fetch("https://www.random.org/quota/?format=plain");
     randomRemaining = await response2.text();
     document.getElementById('randomness').innerHTML = "Random.org bits remaining: " + randomRemaining
@@ -29,7 +29,7 @@ async function generateRandomThreeEmoji() {
         console.log(randomIndex);
         emojigroup = emojigroup + emoji["emojis"][randomIndex]["emoji"];
         emojidescriptiongroup = emojidescriptiongroup + emoji["emojis"][randomIndex]["name"]
-            + " (" + emoji["emojis"][randomIndex]["category"] + ")" + "<br>";
+            + " (" + emoji["emojis"][randomIndex]["group"] + ")" + "<br>";
         document.getElementById('random-three-emoji').innerHTML = emojigroup;
         document.getElementById('random-three-emoji-description').innerHTML = emojidescriptiongroup;
         response2 = await fetch("https://www.random.org/quota/?format=plain");
@@ -87,7 +87,7 @@ async function generateStoryNoFlags() {
         randomIndex = await response.text();
         randomIndex = Number(randomIndex) - 1;
         console.log(randomIndex);
-        if (emoji["emojis"][randomIndex]["subcategory"] == "country-flag") {
+        if (emoji["emojis"][randomIndex]["subgroup"] == "country-flag") {
             i = i - 1;
             continue
         }
@@ -107,7 +107,7 @@ async function generateStoryNoFlags() {
         randomIndex = await response.text();
         randomIndex = Number(randomIndex) - 1;
         console.log(randomIndex);
-        if (emoji["emojis"][randomIndex]["subcategory"] == "country-flag") {
+        if (emoji["emojis"][randomIndex]["subgroup"] == "country-flag") {
             i = i - 1;
             continue
         }
